@@ -21,13 +21,13 @@ class Airplane {
       this.isFlying = false;
     }
   }
-  
+
   /*
   // 👇 COMPLETE YOUR WORK BELOW 👇
   // 👇 COMPLETE YOUR WORK BELOW 👇
   // 👇 COMPLETE YOUR WORK BELOW 👇
   */
-  
+
   /*
     TASK 1
       - Write a Person class whose constructor initializes `name` and `age` from arguments.
@@ -40,11 +40,26 @@ class Airplane {
       - Give instances of Person a method `.toString()`:
           + It should return a string with `name` and `age`. Example: "Mary, 50"
   */
-  
+
  class Person {
-    
+    constructor(name, age){
+      this.name = name;
+      this.age = age;
+      this.stomach = [];
+    }
+    eat(edible){
+      if(this.stomach.length < 10){
+        this.stomach.push(edible);
+        }
+      }
+    poop() {
+      return this.stomach = [];
+    }
+    toString() {
+      return `${this.name}, ${this.age}`;
+    }
   }
-  
+
   /*
     TASK 2
       - Write a Car class whose constructor initializes `model` and `milesPerGallon` from arguments.
@@ -58,11 +73,31 @@ class Airplane {
       - A car which runs out of `fuel` while driving can't drive any more distance:
           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
   */
-  
+
  class Car {
-    
+   constructor(model, milesPerGallon){
+     this.model = model;
+     this.milesPerGallon = milesPerGallon;
+     this.tank = 0;
+     this.odometer = 0;
+     //this.fill = fill;
+   }
+   fill(gallons){
+     this.tank = this.tank + gallons;
+   }
+   drive(distance){
+     const driveableMiles = this.tank * this.milesPerGallon;
+     if(distance <= driveableMiles){
+       this.odometer = this.odometer + distance;
+       this.tank = this.tank - (distance/ this.milesPerGallon);
+     } else{
+       this.odometer = this.odometer + driveableMiles;
+       this.tank = 0
+       return `I ran out of fuel at ${this.odometer} miles!`
+     }
+   }
   }
-  
+
   /*
     TASK 3
       - Write a Lambdasian class.
@@ -76,9 +111,18 @@ class Airplane {
           + {name} and {location} of course come from the instance's own properties.
   */
  class Lambdasian {
-    
+   constructor(whatevs){
+     this.name = whatevs.name;
+     this.age = whatevs.age;
+     this.location = whatevs.location;
+   }
+
+   speak(){
+     return `Hello my name is ${this.name}, I am from ${this.location}`
+   }
   }
-  
+
+
   /*
     TASK 4
       - Write an Instructor class extending Lambdasian.
@@ -93,9 +137,10 @@ class Airplane {
           + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
           + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
   */
- class Instructor {
 
- }
+class Instructor extends Lambdasian{}
+
+
   /*
     TASK 5
       - Write a Student class extending Lambdasian.
@@ -112,9 +157,9 @@ class Airplane {
           + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
   */
  class Student {
-     
+
  }
-  
+
   /*
     TASK 6
       - Write a ProjectManager class extending Instructor.
@@ -129,7 +174,7 @@ class Airplane {
           + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
   */
  class ProjectManager {
-     
+
  }
   /*
     STRETCH PROBLEM (no tests!)
